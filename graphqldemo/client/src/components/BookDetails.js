@@ -31,7 +31,8 @@ class BookDetails extends Component {
         );
     }
 }
-
+// attaching the props as query variable, whenever we click on the book, it'll grab the book id and its detail.
+// when props updates, this is going to rerun and reset the varible for this query
 export default graphql(getBookQuery, {
     options: (props) => {
         return {
