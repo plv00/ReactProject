@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const pokemonSchema = new Schema({
   name: String,
-  ptype: String,
+  type: String,
   description: String,
   trainerId: String
 

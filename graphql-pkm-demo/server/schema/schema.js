@@ -19,7 +19,7 @@ const PokemonType = new GraphQLObjectType({
   fields: () => ({
     id: {type: GraphQLID},
     name: {type: GraphQLString},
-    ptype: {type: GraphQLString},
+    type: {type: GraphQLString},
     description: {type: GraphQLString},
     trainer: {
       type: TrainerType,
@@ -99,14 +99,14 @@ const Mutation = new GraphQLObjectType({
       type: PokemonType,
       args: {
         name: { type: new GraphQLNonNull(GraphQLString)},
-        ptype: { type: new GraphQLNonNull(GraphQLString) },
+        type: { type: new GraphQLNonNull(GraphQLString) },
         description: { type: new GraphQLNonNull(GraphQLString) },
         trainerId: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args){
         let pokemon = new Pokemon({
           name: args.name,
-          ptype: args.ptype,
+          type: args.type,
           description: args.description,
           trainerId: args.trainerId
         });
