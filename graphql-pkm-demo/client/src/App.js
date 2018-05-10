@@ -4,6 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 
 import PokemonList from './components/PokemonList';
 import AddPokemon from './components/AddPokemon';
+import AddTrainer from './components/AddTrainer';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql'
@@ -16,7 +17,10 @@ class App extends Component {
         <div id="main">
           <h1>Trainer's Pokemon List</h1>
           <PokemonList/>
-          <AddPokemon/>
+           <AddPokemon/> 
+          
+          <AddTrainer />
+
         </div>
       </ApolloProvider>
     );

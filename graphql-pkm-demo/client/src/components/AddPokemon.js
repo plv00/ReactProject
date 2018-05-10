@@ -24,9 +24,9 @@ class AddPokemon extends Component {
     }
   }
   
-  submitForm(e){
+  submitForm(event){
     //prevent page refresh when submit is pressed
-    e.preventDefault()
+    event.preventDefault()
     this.props.addPokemonMutation({
       variables: {
         name: this.state.name,
@@ -41,34 +41,35 @@ class AddPokemon extends Component {
 
   render(){
     return(
-      <form id="add-pokemo" onSubmit={this.submitForm.bind(this)}>
+      <form id="add-pokemon" onSubmit={this.submitForm.bind(this)}>
         <div className="field">
-        <label>Pokemon Name:</label>
-        <input type="text" onChange={(e) => this.setState({name: e.target.value})}/>
+          <label>Pokemon Name:</label>
+          <input type="text" onChange={(event) => this.setState({name: event.target.value})}/>
         </div>
         <div className="field">
-        <label>Type:</label>
-        <input type="text" onChange={(e) => this.setState({type: e.target.value})}/>
+          <label>Type:</label>
+          <input type="text" onChange={(event) => this.setState({type: event.target.value})}/>
         </div>
         <div className="field">
-        <label>Description:</label>
-        <input type="text" onChange={(e) => this.setState({description: e.target.value})}/>
+          <label>Description:</label>
+          <input type="text" onChange={(event) => this.setState({description: event.target.value})}/>
         </div>
         <div className="field">
-        <label>Trainer:</label>
-        
-        <select onChange={(e) => this.setState({trainerId: e.target.value})} >
-          <option>Select Trainer</option>
-          {this.displayTrainers()}
-        </select>
+          <label>Trainer:</label>
+          
+          <select onChange={(event) => this.setState({trainerId: event.target.value})} >
+            <option>Select Trainer</option>
+            {this.displayTrainers()}
+          </select>
         </div>
-        <button>Add</button>
+        <button id="add-pokemon-button">Add</button>
         
       </form>
     );
   }
 }
 
+// require "name" since making 2 query so this.props.data was only when making 1 query.
 export default compose(
   graphql(getTrainersQuery, {name: "getTrainersQuery"}),
   graphql(addPokemonMutation, {name: "addPokemonMutation"})

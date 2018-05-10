@@ -27,6 +27,15 @@ const addPokemonMutation = gql`
   }
 `;
 
+const addTrainerMutation = gql`
+  mutation AddTrainer($name: String!, $age: Int!){
+    addTrainer(name: $name, age: $age){
+      name
+      id
+    }
+  }
+`;
+
 const getPokemonQuery = gql`
   query GetPokemon($id: ID){
     pokemon(id: $id) {
@@ -47,4 +56,4 @@ const getPokemonQuery = gql`
   }
 `;
 
-export { getTrainersQuery, getPokemonsQuery, addPokemonMutation, getPokemonQuery};
+export { getTrainersQuery, getPokemonsQuery, addPokemonMutation, getPokemonQuery, addTrainerMutation};
