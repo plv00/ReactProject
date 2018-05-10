@@ -1,4 +1,4 @@
-import { gql } from 'appolo-boost';
+import { gql } from 'apollo-boost';
 
 const getTrainersQuery = gql`
   {
@@ -19,7 +19,7 @@ const getPokemonsQuery = gql`
 `;
 
 const addPokemonMutation = gql`
-  mutation AddPokemon($name: String!, $type: String!, $description: String!, $trainerId: ID!){
+  mutation AddPokemon($name: String!, $type: String!, $description: String!, $trainerId: String!){
     addPokemon(name: $name, type: $type, description: $description, trainerId: $trainerId){
       name
       id
