@@ -2,6 +2,8 @@ const graphql = require('graphql');
 const _ = require('lodash');
 const Pokemon = require('../models/pokemon');
 const Trainer = require('../models/trainer');
+const Pkmgo = require('../models/pkmgo');
+
 
 const {
   GraphQLObjectType,
@@ -30,6 +32,16 @@ const PokemonType = new GraphQLObjectType({
   })
 });
 
+const PkmgoType = new GraphQLObjectType({
+  name: 'Pkmgo',
+  fields: () => ({
+    id: {type: GraphQLID},
+    name: {type: GraphQLString},
+    types: {type: GraphQLString},
+    description: {type: GraphQLString},
+    moves: {type: GraphQLString}
+  })
+});
 
 const TrainerType = new GraphQLObjectType({
   name: 'Trainer',
@@ -54,6 +66,12 @@ const RootQuery = new GraphQLObjectType({
       args: {id: {type: GraphQLID}},
       resolve(parent, args){
         return Pokemon.findById(args.id);
+      }
+    },
+    pkmgo: {
+      type: PkmgoType,
+      resolve(parent, args, req){
+        return req.pkmgo;
       }
     },
     trainer: {
