@@ -1,8 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+const MyPage = () => (
+  <Fabric>
+    <DefaultButton
+      text='Press Me'
+      primary={ true }
+    />
+  </Fabric>
+);
+
+ReactDOM.render(<MyPage />, document.getElementById('root'));
